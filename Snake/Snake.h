@@ -1,5 +1,11 @@
 #pragma once
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <stdbool.h>
+#include <locale.h>
+
 //蛇的方向
 enum DIRECTION
 {
@@ -40,9 +46,16 @@ typedef struct Snake
 	enum GAME_STATUS _status;//蛇的状态
 	int _food_weight;//一个食物的分数
 	int _score;//总分数
-	int _sleep_time;//休息时间
+	int _sleep_time;//休息时间 - 时间短，速度快；时间长，速度慢
 }Snake,* pSnake;
 
 //函数的声明
 
+//游戏的初始化
+void GameStart(pSnake ps);
 
+//欢迎界面的打印
+void WelcomeToGame();
+
+//创建地图
+void CreateMap();
