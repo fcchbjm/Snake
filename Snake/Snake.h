@@ -5,6 +5,14 @@
 #include <windows.h>
 #include <stdbool.h>
 #include <locale.h>
+#include <time.h>
+
+#define POS_X 24
+#define POS_Y 5
+
+#define WALL L'□'
+#define BODY L'●'
+#define FOOD L'★'
 
 //蛇的方向
 enum DIRECTION
@@ -41,7 +49,7 @@ typedef struct SnakeNode
 typedef struct Snake
 {
 	pSnakeNode _pSnake;//指向蛇头的指针
-	pSnakeNode _pfood;//指向食物节点的指针
+	pSnakeNode _pFood;//指向食物节点的指针
 	enum DIRECTION _dir;//蛇的方向
 	enum GAME_STATUS _status;//蛇的状态
 	int _food_weight;//一个食物的分数
@@ -51,6 +59,9 @@ typedef struct Snake
 
 //函数的声明
 
+//定位光标位置
+void SetPos(short x, short y);
+
 //游戏的初始化
 void GameStart(pSnake ps);
 
@@ -59,3 +70,33 @@ void WelcomeToGame();
 
 //创建地图
 void CreateMap();
+
+//初始化蛇身
+void InitSnake(pSnake ps);
+
+//创建食物
+void CreateFood(pSnake ps);
+
+//游戏运行的逻辑
+void GameRun(pSnake ps);
+
+//蛇的移动-走一步
+void SnakeMove(pSnake ps);
+
+//判断下一个坐标是否是食物
+int NextIsFood(pSnakeNode pn, pSnake ps);
+
+//下一个位置是食物，就吃掉食物
+void EatFood(pSnakeNode pn, pSnake ps);
+
+//下一个位置不是食物
+void NoFood(pSnakeNode pn, pSnake ps);
+
+//检测蛇是否撞墙
+void KillByWall(pSnake ps);
+
+//检测蛇是否撞到自己
+void KillBySelf(pSnake ps);
+
+//游戏善后的工作
+void GameEnd(pSnake ps);
