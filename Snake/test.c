@@ -3,7 +3,7 @@
 #include "Snake.h"
 
 //完成的是游戏的测试逻辑
-void test()
+void snake()
 {
 	int ch = 0;
 	do
@@ -38,7 +38,7 @@ int main()
 	//设置适配本地环境
 	setlocale(LC_ALL, "");
 	srand((unsigned int)time(NULL));
-	test();
+	snake();
 
 	return 0;
 }

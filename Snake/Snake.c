@@ -159,7 +159,7 @@ void GameStart(pSnake ps)
 	//隐藏光标操作
 	CONSOLE_CURSOR_INFO CursorInfo;
 	GetConsoleCursorInfo(houtput, &CursorInfo);//获取控制台光标信息
-	CursorInfo.bVisible = false; //隐藏控制台光标
+	CursorInfo.bVisible = FALSE; //隐藏控制台光标
 	SetConsoleCursorInfo(houtput, &CursorInfo);//设置控制台光标状态
 
 	//1. 打印环境界面和功能介绍
